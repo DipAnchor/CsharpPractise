@@ -1,1 +1,0 @@
-C:\mystuff\CsharpPractise\MysqlPractise\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
