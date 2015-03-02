@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script language="javascript" type="text/javascript">
+    function newone() {
+        //(document.getElementById("name"+i)).value = "";
+        //(document.getElementById("ssid" + i)).value = "";
+        //(document.getElementById("pw" + i)).value = "";
+        //(document.getElementById("description" + i)).value = "";
+        //(document.getElementById("action" + i)).value = "AddNew";
+        var neweditrow = document.createElement("form");
+        neweditrow.setAttribute("action", "DataEdit.ashx");
+        neweditrow.setAttribute("method", "get");
+        neweditrow.setAttribute("id", "neweditrow1");
+        var foms="<table> <tr> <td>名称： </td><td><input id='namenw' type='text' name='name' value='' /> </tr> <tr> <td>SSID： </td> <td><input id='ssidnw' type='text' name='ssid' value='' /> </tr> <tr> <td>PW： </td> <td><input id='pwnw' type='text' name='pw' value='' /> </tr> <tr> <td>描述： </td> <td><input id='descriptionnw' type='text' name='description' value='' /> </tr> <tr><td><input id='actionnw' name='action' value='AddNew' hidden='hidden' /><input type='submit' value='新建' /></td></tr></table>";
+        neweditrow.innerHTML = (foms);
+        if ((document.getElementById("neweditrow1"))==null){
+        var newbutton = document.getElementById("setnew");
+        newbutton.parentNode.appendChild(neweditrow);
+    }
+        
+        
+    }
+    </script>
+
+</head>
+<body>
+    
+        #set($i=0)
+            #foreach ($row in $Data)
+    <form id="form$i" action="DataEdit.ashx" method="get">
+        <table>
+            <tr>
+                <td>名称： </td>
+                <td><input id="name$i" type="text" name="name" value="$row.name" />
+            </tr>
+            <tr>
+                <td>SSID： </td>
+                <td><input id="ssid$i" type="text" name="ssid" value="$row.wifi_ssid" />
+            </tr>
+            <tr>
+                <td>PW： </td>
+                <td><input id="pw$i" type="text" name="pw" value="$row.wifi_password" />
+            </tr>
+            <tr>
+                <td>描述： </td>
+                <td><input id="description$i" type="text" name="description" value="$row.area_description" />
+            </tr>
+            <tr><td><input id="action$i" name="action" value="Edit" hidden="hidden" /><input type="submit" value="提交" /></td></tr>
+        </table>
+    </form>
+        #set($i=$i+1)
+    
+        #end
+
+
+
+
+    
+    <table id="setnew"><tr><td><a href="javascript:void(0);" onclick="newone();">新建</a></button></td></tr></table>
+</body>
+</html>
